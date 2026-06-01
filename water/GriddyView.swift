@@ -39,7 +39,7 @@ struct GriddyView: View {
                     }
                 }
             }
-            .navigationTitle("Gallery")
+            .navigationTitle("G")
         }
     }
 }
