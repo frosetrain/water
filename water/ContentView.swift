@@ -12,7 +12,7 @@ let isoFormatter = ISO8601DateFormatter()
 struct Photo: Identifiable, Hashable {
     let id = UUID()
     let photo: Image
-    
+
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
     }
@@ -26,12 +26,12 @@ struct DayDrinks: Hashable {
 
 func formatDate(date: Date) -> String {
     let calendar = Calendar.current
-    
+
     if calendar.isDateInToday(date) { return "Today" }
     if calendar.isDateInYesterday(date) { return "Yesterday" }
-    
+
     return date.formatted(date: .complete, time: .omitted)
-    
+
 }
 
 struct ContentView: View {
@@ -69,21 +69,20 @@ struct ContentView: View {
             date: isoFormatter.date(from: "1000-10-10T12:00:00Z")!
         ),
     ]
-    
+
     var body: some View {
+
         TabView {
-            Tab("Griddy", systemImage: "square.grid.3x2") {
+            Tab("Album", systemImage: "square.grid.3x2") {
                 GriddyView(drinks: $drinks)
             }
-            
-            Tab("Slanted", systemImage: "menucard") {
-                SlantedView(drinks: $drinks)
+            Tab("Homeemem", systemImage: "house") {
+                tempHomeScreen(drinks:$drinks, image:$image)
             }
             
-            Tab("Camera", systemImage: "camera") {
-                CameraView(drinks: $drinks, image: $image)
-            }
+
         }
+
         .task {
             await camera.start()
 

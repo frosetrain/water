@@ -37,7 +37,9 @@ struct CameraView: View {
                         .offset(y: 300)
                     }
                 }
+
                 Spacer()
+
             }
             .navigationTitle("Drink")
             .toolbar {
