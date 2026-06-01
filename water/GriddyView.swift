@@ -33,7 +33,6 @@ struct GriddyView: View {
                                     .aspectRatio(1, contentMode: .fit)
                                     .clipShape(.rect(cornerRadius: 8))
                                     .shadow(radius: 3)
-                                    .rotationEffect(Angle(degrees: 7))
                             }
                         }
                     }

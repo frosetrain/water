@@ -35,6 +35,8 @@ func formatDate(date: Date) -> String {
 }
 
 struct ContentView: View {
+    let camera = Camera()
+    @State private var image: Image?
     @State private var drinks = [
         DayDrinks(
             photos: [],
@@ -79,7 +81,14 @@ struct ContentView: View {
             }
             
             Tab("Camera", systemImage: "camera") {
-                CameraView(drinks: $drinks)
+                CameraView(drinks: $drinks, image: $image)
+            }
+        }
+        .task {
+            await camera.start()
+
+            for await preview in camera.previewStream {
+                self.image = preview.image
             }
         }
     }

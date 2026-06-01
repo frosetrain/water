@@ -1,10 +1,9 @@
 import SwiftUI
 
 struct CameraView: View {
-    let camera = Camera()
     @Binding var drinks: [DayDrinks]
+    @Binding var image: Image?
 
-    @State private var image: Image?
     @State private var newImage: Image?
     var body: some View {
         NavigationStack {
@@ -59,13 +58,6 @@ struct CameraView: View {
             .ignoresSafeArea()
         }
 
-        .task {
-            await camera.start()
-
-            for await preview in camera.previewStream {
-                self.image = preview.image
-            }
-        }
     }
 
 }
