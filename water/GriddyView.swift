@@ -38,7 +38,7 @@ struct GriddyView: View {
                     }
                 }
             }
-            .navigationTitle("G")
+            .navigationTitle("Gallery")
         }
     }
 }
